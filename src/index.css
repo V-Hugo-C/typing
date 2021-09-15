@@ -1,13 +1,66 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap');
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body:{
+    width: 100%;
+    min-height: 100vh;
+    color: #e1e1e1;
+    background-color: #1e1e1e;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Rubick','sans-serif' ;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+
+.container{
+    width:100%;
+    height: 100vh;
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items:center;
 }
+
+.container .validKeys{
+    font-size: 10rem;
+    font-weight: bold;
+    min-width: 600px;
+    border-bottom: solid 3px #fff;
+}
+.container .validKeys .matched{
+    background-color:#fdf8c5;
+    color:#282c34;
+}
+.container .validKeys .remainder{
+    opacity: 0.5;
+}
+.container .completedWords{
+    width:max-content;
+    height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    text-align: left;
+    padding:20px 40px;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    opacity:0.5;
+}
+
+.container .tipedKeys{
+    margin-top: 20px;
+    font-size: 1.3rem;
+    width: 600px;
+    overflow:hidden;
+
+}
+
