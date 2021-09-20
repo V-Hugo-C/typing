@@ -21,36 +21,38 @@ const Word =({word,validKeys}) => {
     const matched = word.slice(0, joinedKeys.length);
     const remainder = word.slice(joinedKeys.length);
 
-return (<>
-    <span className="matched"></span>
-    <span className="remainder">{word}</span>
-</>)}
+return (
+<>
+    <span className="matched">{matched}</span>
+    <span className="remainder">{remainder}</span>
+</>
+    );
+};
 
 const App = () => {
 
 
-    const [tipedKeys,setTipedKeys]= useState(['']);
+    const [typedKeys,setTypedKeys]= useState([]);
     const [validKeys,setValidKeys]= useState([]);
-
     const [word, setWord] = useState('');
 
     useEffect(()=>{
         setWord(getWord());
-    });
+    },[]);
     
     const handleKeyDown = (e) => {
         e.preventDefault();
         const { key } = e;
 
-        setTipedKeys((prevTipedKeys) => {
-            return[...prevTipedKeys,key].slice(maxTypedKeys*-1);
+        setTypedKeys((prevTypedKeys) => {
+            return[...prevTypedKeys,key].slice(maxTypedKeys*-1);
         });
 
         if(isValidKeys(key, word)){
-            setValidKeys((prevTipedKeys) => {
-                const isvalidLength = prevTipedKeys.length <= word.length;
-                const isNextChar = isvalidLength && word[prevTipedKeys.length] === key;
-                return isNextChar ? [...prevTipedKeys, key] : prevTipedKeys;
+            setValidKeys((prevTypedKeys) => {
+                const isValidLength = prevTypedKeys.length <= word.length;
+                const isNextChar = isValidLength && word[prevTypedKeys.length] === key;
+                return isNextChar ? [...prevTypedKeys, key] : prevTypedKeys;
             });
 
         }
@@ -61,13 +63,14 @@ const App = () => {
         <div className="validKeys">
             <Word word = {word} validKeys={validKeys}/>
         </div>
-        <div className="tipedKeys">{tipedKeys ? tipedKeys.join(' '): null}</div>
+        <div className="typedKeys">{typedKeys ? typedKeys.join(' '): null}</div>
         <div className="completedWords">
             <ol>
                 <li>da</li>
                 <li>daa</li>
                 <li>fas</li>
                 <li>dasf</li>
+                
             </ol>
         </div>
     </div>)
